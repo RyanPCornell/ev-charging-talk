@@ -399,6 +399,32 @@ img.bleed{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
   color:var(--accent);}
 @media (max-width:820px){ .sm-wall{grid-template-columns:1fr;} }
 
+.sm-anim{margin:clamp(.7rem,1.8vh,1.2rem) 0 0; background:var(--paper);
+  border:1px solid var(--line); border-top:4px solid var(--accent); border-radius:14px;
+  padding:clamp(.6rem,1.3vw,1rem) clamp(.8rem,1.6vw,1.2rem) clamp(.5rem,1vw,.8rem);
+  box-shadow:0 4px 14px rgba(20,40,30,.06);}
+.sm-anim-wrap{position:relative;}
+.sm-anim svg{width:100%; height:auto; display:block; max-height:34vh;}
+.sc-panel{fill:#e6e6e6;}
+.sc-grid{stroke:#fff; stroke-width:1.4; fill:none;}
+.sc-reserve{stroke:#b0b0b0; stroke-width:1.4; stroke-dasharray:6 5; fill:none;}
+.sc-line{fill:none; stroke:#59a691; stroke-width:2.4;
+  stroke-linecap:round; stroke-linejoin:round;}
+.sc-dot{fill:#59a691;}
+.sc-title{font-family:'Inter',sans-serif; font-size:14px; fill:#3a3a3a;}
+.sc-tick{font-family:'Inter',sans-serif; font-size:12px; fill:#4d4d4d;}
+.sc-ty{text-anchor:end;}
+.sc-tx{text-anchor:middle;}
+.sc-axis{font-family:'Inter',sans-serif; font-size:13px; fill:#3a3a3a;}
+.sc-flash{position:absolute; inset:0; display:grid; place-items:center;
+  pointer-events:none; opacity:0; transition:opacity .18s ease;}
+.sc-flash.on{opacity:1;}
+.sc-flash span{background:#A4373A; color:#fff; font-family:'Inter',sans-serif;
+  font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+  font-size:clamp(.95rem,2.1vw,1.5rem); padding:.5rem 1.4rem; border-radius:10px;
+  box-shadow:0 8px 26px rgba(120,30,35,.35);}
+@media (prefers-reduced-motion:reduce){ .sc-flash{transition:none;} }
+
 .case-grid .gcard{display:flex; flex-direction:column;}
 .case-list{list-style:none; margin:.2rem 0 0; padding:0;}
 .case-list li{position:relative; padding-left:1.15rem; margin-bottom:.5rem;
@@ -536,7 +562,7 @@ img.bleed{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
 <div class="eyebrow">Charging Paradigm · Paradigm Shift</div>
 <h2 class="heading">Paradigm Shift: Gas Mindset to EV Mindset</h2>
 <div class="stat-row"><div class="stat-box"><div class="stat-num">~60%</div><div class="stat-lbl">of households in detached single family homes (Census data)</div></div><div class="stat-box"><div class="stat-num">78%</div><div class="stat-lbl">of road trips are between 50 and 249 miles (NHTS)</div></div></div>
-<ul class="bullets"><li><strong>Optimize for:</strong></li><li class="sub">Actual time cost</li><li class="sub">Convenience</li><li class="sub">Need</li><li><strong>Important Points:</strong></li><li class="sub">Tesla has mostly solved the problem of long-distance EV travel</li></ul>
+<ul class="bullets"><li><strong>Optimize for:</strong></li><li class="sub">Actual time cost</li><li class="sub">Convenience</li><li class="sub">Need</li><li><strong>Important Points:</strong></li><li class="sub">Tesla has mostly solved the problem of long-distance EV travel.</li></ul>
     </div>
   </div>
   <div class="footer">Guest Lecture on EV Charging &middot; Ryan Cornell &middot; September 8</div>
@@ -551,9 +577,9 @@ img.bleed{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
           <li>Cost</li>
           <li>Grid</li>
           <li>Optics</li>
-          <li>Extended time can be a feature, not a bug</li>
-          <li>Feasible to install at scale</li>
-          <li>And&hellip;.Level 1 provides enough charging for the vast majority of drivers</li>
+          <li>Extended time can be a feature, not a bug.</li>
+          <li>Feasible to install at scale.</li>
+          <li>And&hellip;.Level 1 provides enough charging for the vast majority of drivers.</li>
           <li class="adv-q">But&hellip;how many?</li>
         </ul>
       </div>
@@ -596,19 +622,20 @@ img.bleed{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
 <section class="slide io-slide" data-type="content" style="--accent:#B5651D">
   <div class="slide-inner col">
     <div class="eyebrow">Feasibility Research &middot; Model Design</div>
-    <h2 class="heading">What does a Level 1 Charging model need to consider?</h2>
+    <h2 class="heading">What does an EV Charging model need to consider?</h2>
     <div class="io-grid">
       <div class="io-side">
-        <div class="io-chip">Monthly driving</div>
+        <div class="io-chip">Daily/Monthly driving</div>
         <div class="io-chip">Range</div>
         <div class="io-chip">Charging at work/home</div>
+        <div class="io-chip">Vehicle Type</div>
       </div>
       <div class="io-mid" aria-hidden="true">
         <div class="io-arrow">&#10230;</div>
       </div>
       <div class="io-side io-out">
         <div class="io-card"><div class="io-card-h">Output: Probability</div></div>
-        <div class="io-card"><div class="io-card-h">Output: Average Number of stops</div></div>
+        <div class="io-card"><div class="io-card-h">Output: Average Number of L3 stops</div></div>
       </div>
     </div>
   </div>
@@ -619,6 +646,7 @@ img.bleed{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
     <div class="eyebrow">Simulation Results · Simulations</div>
     <h2 class="heading">Simulations: 350-mile range EV</h2>
     <div class="sm-wall"><figure class="sm-card"><div class="sm-shot"><img src="media/image31.png" alt=""></div><figcaption>Month 1</figcaption></figure><figure class="sm-card"><div class="sm-shot"><img src="media/image32.png" alt=""></div><figcaption>Month 2</figcaption></figure><figure class="sm-card"><div class="sm-shot"><img src="media/image33.png" alt=""></div><figcaption>Month 3</figcaption></figure></div>
+    
   </div>
   <div class="footer">Guest Lecture on EV Charging &middot; Ryan Cornell &middot; September 8</div>
 </section>
@@ -627,6 +655,59 @@ img.bleed{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
     <div class="eyebrow">Simulation Results · Simulations</div>
     <h2 class="heading">Simulations: 200-mile range EV</h2>
     <div class="sm-wall"><figure class="sm-card"><div class="sm-shot"><img src="media/image34.png" alt=""></div><figcaption>Month 1</figcaption></figure><figure class="sm-card"><div class="sm-shot"><img src="media/image35.png" alt=""></div><figcaption>Month 2</figcaption></figure><figure class="sm-card"><div class="sm-shot"><img src="media/image36.png" alt=""></div><figcaption>Month 3</figcaption></figure></div>
+    <figure class="sm-anim">
+  <div class="sm-anim-wrap">
+    <svg viewBox="0 0 900 292" role="img"
+         aria-label="An animated month of driving: battery range falls across each day and tops back up overnight, and a fast charge resets it to full whenever it reaches the 20-mile reserve">
+      <text class="sc-title" x="450" y="16" text-anchor="middle">Monthly Charging</text>
+      <rect class="sc-panel" x="76.0" y="32.0" width="800.0" height="214.0"/>
+      <path class="sc-grid" d="M76.0 246.0H876.0"/><text class="sc-tick sc-ty" x="66.0" y="250.0">0</text><path class="sc-grid" d="M76.0 195.0H876.0"/><text class="sc-tick sc-ty" x="66.0" y="199.0">50</text><path class="sc-grid" d="M76.0 144.1H876.0"/><text class="sc-tick sc-ty" x="66.0" y="148.1">100</text><path class="sc-grid" d="M76.0 93.1H876.0"/><text class="sc-tick sc-ty" x="66.0" y="97.1">150</text><path class="sc-grid" d="M76.0 42.2H876.0"/><text class="sc-tick sc-ty" x="66.0" y="46.2">200</text><path class="sc-grid" d="M76.0 32.0V246.0"/><text class="sc-tick sc-tx" x="76.0" y="264.0">0</text><path class="sc-grid" d="M207.1 32.0V246.0"/><text class="sc-tick sc-tx" x="207.1" y="264.0">10</text><path class="sc-grid" d="M338.3 32.0V246.0"/><text class="sc-tick sc-tx" x="338.3" y="264.0">20</text><path class="sc-grid" d="M469.4 32.0V246.0"/><text class="sc-tick sc-tx" x="469.4" y="264.0">30</text><path class="sc-grid" d="M600.6 32.0V246.0"/><text class="sc-tick sc-tx" x="600.6" y="264.0">40</text><path class="sc-grid" d="M731.7 32.0V246.0"/><text class="sc-tick sc-tx" x="731.7" y="264.0">50</text><path class="sc-grid" d="M862.9 32.0V246.0"/><text class="sc-tick sc-tx" x="862.9" y="264.0">60</text>
+      <path class="sc-reserve" d="M76.0 225.61904761904762H876.0"/>
+      <polyline class="sc-line" data-poly points=""/>
+      <circle class="sc-dot" data-dot cx="76.0" cy="32.0" r="4.5"/>
+      <text class="sc-axis sc-axis-x" x="476" y="284" text-anchor="middle">Day</text>
+      <text class="sc-axis" x="26" y="139" text-anchor="middle"
+            transform="rotate(-90 26 139)">Range (Miles)</text>
+    </svg>
+    <div class="sc-flash" data-flash aria-hidden="true"><span>Fast Charge Needed</span></div>
+  </div>
+  <script>(function(){
+    var root = document.currentScript.closest('.sm-anim');
+    if(!root || root.dataset.wired) return; root.dataset.wired = '1';
+    var SER = [200.0,186.3,168.1,147.9,122.1,104.0,78.9,87.8,80.2,20.0,185.3,161.1,166.8,159.0,159.6,148.9,137.1,146.6,148.4,147.8,123.0,103.9,107.8,87.5,92.2,78.8,84.0,93.9,70.8,72.8,74.6,20.0,176.8,175.9,149.3,138.8,123.1,125.3,99.5,83.3,20.0,176.0,174.7,171.0,174.7,179.1,186.6,185.2,172.3,182.1,166.4,163.5,161.8,140.7,132.4,130.4,122.1,105.3,113.2,86.1,95.2,76.7], RESET = [9,31,40];
+    var poly = root.querySelector('[data-poly]'),
+        dot = root.querySelector('[data-dot]'),
+        flash = root.querySelector('[data-flash]'),
+        slide = root.closest('section.slide');
+    var X0 = 76.0, X1 = 876.0, Y0 = 246.0, H = 214.0, VMAX = 210.0, N = SER.length;
+    function gx(i){ return X0 + (i / (N - 1)) * (X1 - X0); }
+    function gy(v){ return Y0 - (v / VMAX) * H; }
+    var i = 0, pts = [], hold = 0, flashTimer = null;
+    function clear(){
+      i = 0; pts = []; hold = 0;
+      poly.setAttribute('points', '');
+      dot.setAttribute('cx', X0); dot.setAttribute('cy', gy(SER[0]));
+      flash.classList.remove('on');
+    }
+    function step(){
+      // idle while the slide is off screen, and restart clean on arrival
+      if(slide && !slide.classList.contains('active')){ if(i !== 0) clear(); return; }
+      if(hold > 0){ hold--; return; }
+      pts.push(gx(i).toFixed(1) + ',' + gy(SER[i]).toFixed(1));
+      poly.setAttribute('points', pts.join(' '));
+      dot.setAttribute('cx', gx(i)); dot.setAttribute('cy', gy(SER[i]));
+      if(RESET.indexOf(i) !== -1){
+        flash.classList.add('on');
+        clearTimeout(flashTimer);
+        flashTimer = setTimeout(function(){ flash.classList.remove('on'); }, 1700);
+      }
+      i++;
+      if(i >= N){ i = 0; pts = []; hold = 7; }   // hold the finished month, then redraw
+    }
+    clear();
+    setInterval(step, 210);
+  })();</script>
+</figure>
   </div>
   <div class="footer">Guest Lecture on EV Charging &middot; Ryan Cornell &middot; September 8</div>
 </section>
@@ -635,7 +716,7 @@ img.bleed{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
     <div class="bleed-text">
 <div class="eyebrow">Simulation Results · Feasibility Research</div>
 <h2 class="heading">Battery Range and Probability that L1 will meet charging needs</h2>
-<p class="lead">2021 Average = 234 miles</p>
+<p class="lead">Battery Range = 234 miles</p>
 <ul class="bullets"><li>Red = Night, Green = Night+Work</li></ul>
     </div>
     <div class="bleed-media contain"><img src="media/image37.png" alt=""></div>
@@ -687,15 +768,13 @@ img.bleed{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
       <div class="gcard">
         <div class="gcard-head">Case study: Mayo Clinic</div>
         <ul class="case-list">
-          <li>15 Level 1 Pedestals; consistently full; less than $1,000 per pedestal</li>
-          <li>24 Level 2 Stations; ~122 unique visitors per month; ~$8,000 per station; $4 a day</li>
+          <li>15 Level 1 Pedestals; consistently full; less than $1,000 per pedestal.</li>
+          <li>24 Level 2 Stations; ~122 unique visitors per month; ~$8,000 per station; $4 a day.</li>
         </ul>
       </div>
       <div class="gcard">
         <div class="gcard-head">Case study: Durango, CO</div>
         <ul class="case-list">
-          <li>~20,000 people (60,000 in La Plata county); 30 to 60-minute drives are common</li>
-          <li>In 2021, developed the EV Readiness Plan and EV parking requirements</li>
           <li><b>Objective:</b> Worked with Durango&rsquo;s Sustainability Manager to develop policies
             and city code related to electric vehicle charging infrastructure.</li>
           <li>Worked alongside the Durango Sustainability Manager and other stakeholders (Colorado
@@ -715,7 +794,7 @@ img.bleed{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
     <div class="eyebrow">Real World · Industry Observations</div>
     <h2 class="heading">Industry Observations</h2>
     
-    <div class="grid cols-4"><div class="gcard"><div class="gcard-icon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M32 20c-5-4-11-5-18-5v30c7 0 13 1 18 5"/><path d="M32 20c5-4 11-5 18-5v30c-7 0-13 1-18 5"/><path d="M32 20v30"/></svg></div><div class="gcard-head">Education</div><div class="gcard-desc"></div></div><div class="gcard"><div class="gcard-icon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22 32 13l20 9-20 9z"/><path d="M12 22v20l20 9 20-9V22"/><path d="M32 31v20"/><path d="M44 8l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></svg></div><div class="gcard-head">New Level 1 products</div><div class="gcard-desc">Plugzio, Orange, etc.</div></div><div class="gcard"><div class="gcard-icon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 54 32 12l10 42"/><path d="M25 40h14"/><path d="M27 28h10"/><path d="M14 22h36"/><path d="M18 22c0 6 4 6 4 12"/><path d="M46 22c0 6-4 6-4 12"/></svg></div><div class="gcard-head">Grid benefits and concerns</div><div class="gcard-desc"></div></div><div class="gcard"><div class="gcard-icon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M34 10H14v20l22 22 20-20L34 10z"/><circle cx="22" cy="20" r="3"/><path d="M40 28c-2-2-6-2-7 0s1 3 3 4 4 2 3 4-5 2-7 0"/><path d="M37 25v14"/></svg></div><div class="gcard-head">Business model</div><div class="gcard-desc">Pay per gallon/kWh compared to Pay for Install</div></div></div>
+    <div class="grid cols-4"><div class="gcard"><div class="gcard-icon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M32 20c-5-4-11-5-18-5v30c7 0 13 1 18 5"/><path d="M32 20c5-4 11-5 18-5v30c-7 0-13 1-18 5"/><path d="M32 20v30"/></svg></div><div class="gcard-head">Education</div><div class="gcard-desc"></div></div><div class="gcard"><div class="gcard-icon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22 32 13l20 9-20 9z"/><path d="M12 22v20l20 9 20-9V22"/><path d="M32 31v20"/><path d="M44 8l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"/></svg></div><div class="gcard-head">New Level 1 products</div><div class="gcard-desc">Plugzio, Orange, etc.</div></div><div class="gcard"><div class="gcard-icon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 54 32 12l10 42"/><path d="M25 40h14"/><path d="M27 28h10"/><path d="M14 22h36"/><path d="M18 22c0 6 4 6 4 12"/><path d="M46 22c0 6-4 6-4 12"/></svg></div><div class="gcard-head">Grid benefits and concerns</div><div class="gcard-desc"></div></div><div class="gcard"><div class="gcard-icon"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M34 10H14v20l22 22 20-20L34 10z"/><circle cx="22" cy="20" r="3"/><path d="M40 28c-2-2-6-2-7 0s1 3 3 4 4 2 3 4-5 2-7 0"/><path d="M37 25v14"/></svg></div><div class="gcard-head">Business model</div><div class="gcard-desc">Pay per gallon/kWh compared to Pay for Install.</div></div></div>
   </div>
   <div class="footer">Guest Lecture on EV Charging &middot; Ryan Cornell &middot; September 8</div>
 </section>
@@ -726,12 +805,12 @@ img.bleed{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
     <div class="nf-grid">
       <div class="nf-text">
         <ul class="bullets">
-          <li>We need to move beyond the &ldquo;gas station mindset&rdquo; and focus on an EV&rsquo;s strengths</li>
-          <li><strong>Goal:</strong> Ubiquitous charging infrastructure</li>
-          <li>Level 1 charging can satisfy the needs of the vast majority of drivers</li>
+          <li>We need to move beyond the &ldquo;gas station mindset&rdquo; and focus on an EV&rsquo;s strengths.</li>
+          <li><strong>Goal:</strong> Ubiquitous charging infrastructure.</li>
+          <li>Level 1 charging can satisfy the needs of the vast majority of drivers.</li>
           <li><strong>Important:</strong></li>
-          <li class="sub">Focus on education</li>
-          <li class="sub">Fund Level 1 charging projects</li>
+          <li class="sub">Focus on education.</li>
+          <li class="sub">Fund Level 1 charging projects.</li>
           <li class="sub">Charging infrastructure isn&rsquo;t <em>one-size-fits-all</em>.</li>
         </ul>
       </div>
